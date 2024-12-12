@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hey Vedh</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        .background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            height: 100vh;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+
+        h1, h2 {
+            margin: 20px;
+        }
+
+        .buttons {
+            margin-top: 20px;
+        }
+
+        .buttons button {
+            padding: 10px 20px;
+            font-size: 18px;
+            margin: 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #007BFF;
+            color: white;
+        }
+
+        .buttons button:hover {
+            background-color: #0056b3;
+        }
+
+        .bouquet {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            height: 100vh;
+            color: white;
+        }
+
+        .bouquet img {
+            width: 300px;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Video -->
+    <video autoplay loop class="background-video" id="background-video">
+        <source src="assets/e9293b84f47b44c4b4bdecfab529a5e2.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <button onclick="playVideoSound()" style="position: absolute; top: 10px; left: 10px; z-index: 10; padding: 10px 20px; background-color: #007BFF; color: white; border: none; border-radius: 5px; cursor: pointer;">Play with Sound</button>
+
+    <!-- Content Container -->
+    <div class="container" id="page-1">
+        <h1>Hey Vedh (Batman)</h1>
+    </div>
+
+    <div class="container" id="page-2" style="display: none;">
+        <h2>Are you free? Do you want to spend some virtual time with me?</h2>
+        <div class="buttons">
+            <button onclick="showBouquet()">Yes</button>
+            <button onclick="alert('Okay, maybe next time!')">No</button>
+        </div>
+    </div>
+
+    <div class="bouquet" id="page-3">
+        <h2>Here is a bouquet for you!</h2>
+        <img src="assets/Copy%20of%20A5229104-E2CA-42C4-88BC-C492C5341819.JPG" alt="Bouquet">
+        <h3>Thank you for choosing yes!</h3>
+    </div>
+
+    <script>
+        // Automatically go to the second page after 3 seconds
+        setTimeout(() => {
+            document.getElementById('page-1').style.display = 'none';
+            document.getElementById('page-2').style.display = 'flex';
+        }, 3000);
+
+        // Show the bouquet page
+        function showBouquet() {
+            document.getElementById('page-2').style.display = 'none';
+            document.getElementById('page-3').style.display = 'flex';
+        }
+
+        // Play video with sound
+        function playVideoSound() {
+            const video = document.getElementById('background-video');
+            video.muted = false;
+            video.play();
+        }
+    </script>
+</body>
+</html>
